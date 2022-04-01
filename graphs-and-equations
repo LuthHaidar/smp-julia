@@ -1,0 +1,18 @@
+using ModelingToolkit, OrdinaryDiffEq, Plots
+
+@parameters m g o
+@variables t x(t)
+p = [ m=> 3e-3, g=> 9.81, o=> 0.001 ]
+D=Differential(t)
+v=D(x)
+a=D(v)
+eq = a ~ g - o * v / m
+@named sys = ODESystem(eq)
+sys = structural_simplify(sys)
+u = [ v => 0, x => 0 ]
+tspan = (0, 20)
+prob=ODEProblem(sys, u, tspan, p, jac=true)
+sol = solve(prob,Tsit5())
+
+plot(sol,vars=(t,v),legend=:bottomright)
+scatter!(sol.t, v_a)
