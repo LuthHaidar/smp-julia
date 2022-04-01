@@ -9,7 +9,8 @@ D=Differential(t)
 v = D(x)
 a = D(v)
 
-eq = a ~ g - o * v / m #eq can be changed here
+eq = a ~ g - o * v^2 / m #eq can be changed here
+#eq = a ~ g - o * v / m
 
 @named sys = ODESystem(eq)
 sys = structural_simplify(sys)
