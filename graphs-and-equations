@@ -20,6 +20,6 @@ prob = ODEProblem(sys, u, tspan, p, jac = true)
 sol = solve(prob, Tsit5());
 
 plot(sol, vars = (t, v), legend = :bottomright)
-scatter!(sol.t, v_a)
+scatter!(sol, vars = (t, v), legend = :bottomright)
 
 plot(sol, vars = (t, x), legend = :bottomright)
