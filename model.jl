@@ -1,6 +1,6 @@
 using DataDrivenDiffEq, ModelingToolkit, OrdinaryDiffEq,  Plots, DelimitedFiles
 
-time_ypos = readdlm("/Users/luth/Downloads/HeavyRedDrop1.txt", ',') # read in the data
+time_ypos = readdlm("HeavyRedDrop1.txt", ',') # read in the data
 time_ypos = time_ypos[setdiff(1:end, (1, 2)), :] #deletes headers
 time_ypos = time_ypos[:, 1:end .!= 3] #deletes column 3
 ypos = time_ypos[:, 1:end .!= 1]
